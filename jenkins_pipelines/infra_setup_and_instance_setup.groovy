@@ -28,7 +28,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 sh '''
-                cd /var/lib/jenkins/workspace/apchwebsite2/terraform_ansible_generic_instace_setup_template
+                cd /var/lib/jenkins/workspace/red_page_html/terraform_ansible_generic_instace_setup_template
                 echo "yes" | terraform init
                 terraform plan -out=terraform.tfplan
                 '''
