@@ -8,8 +8,8 @@ pipeline {
         stage('Clone Git repo') {
             steps {
                 git(
-                    branch: 'jenkins_instance_setup', 
-                    url: 'https://github.com/glass91/devopsLessons.git', 
+                    branch: 'main', 
+                    url: 'https://github.com/glass91/jenkinsNorm.git', 
                     credentialsId: 'acces_to_git'
                 )
             }
@@ -64,7 +64,7 @@ pipeline {
 
         stage('Run Ansible') {
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'access_for_new_node_js_app', keyFileVariable: 'SSH_KEY')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-ansible', keyFileVariable: 'SSH_KEY')]) {
                     sh '''
                     sleep 180
                     cd /var/lib/jenkins/workspace/apchwebsite2/terraform_ansible_generic_instace_setup_template/ansible
